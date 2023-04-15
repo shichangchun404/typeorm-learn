@@ -1,6 +1,6 @@
 ### 初始化 
 ```
-npm i typeorm -g
+npm i typeorm
 
-typeorm init 
+npx typeorm init
 ```

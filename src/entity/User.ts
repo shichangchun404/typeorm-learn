@@ -18,6 +18,5 @@ export class User {
     age: number
 
     @OneToMany(type=>Comment, Comment=>Comment.user)
-    @JoinColumn()
     comments:Comment[]
 }

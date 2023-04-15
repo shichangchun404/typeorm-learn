@@ -41,12 +41,22 @@ AppDataSource.initialize().then(async () => {
     const users2 = await userRepository.find()
     console.log("Loaded all users2: ", users2)
 
+    const [users22,count] = await userRepository.findAndCount()
+    console.log("Loaded all users2: ", users2)
+    console.log("Loaded all users22 count: ", count)
+
     const user1 = await userRepository.findOne({
         where:{
             id:1
         }
     })
-    console.log(" Loaded user id =1 : ", user1)
+
+    const user11 = await userRepository.findOneBy({
+        id:1
+    })
+
+    console.log(" Loaded findOne user id =1 : ", user1)
+    console.log(" Loaded findOneBy user id =1 : ", user11)
     user1.firstName = 'ccc'
     await userRepository.save(user1)
     
@@ -86,5 +96,8 @@ AppDataSource.initialize().then(async () => {
         relations: ['comments']
     })
     console.log("带有评论的用户列表 : ", users4c)
+
+
+    // await userRepository.remove(user)
 
 }).catch(error => console.log(error))
